@@ -21,12 +21,14 @@ public class TeamResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("/getByTeam")
     public Response getTeamsById(long id){
         return Response.ok().entity(teamService.getTeamById(id)).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("/getByLeague")
     public Response getTeamsByLeagueId(long id){
         return Response.ok().entity(teamService.getTeamsByLeagueId(id)).build();
     }
@@ -34,6 +36,7 @@ public class TeamResource {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
+    @Path("/createTeam")
     public Response createTeam(Team team){
         teamService.createTeam(team);
         return Response.status(Response.Status.CREATED).entity(team).build();
@@ -42,6 +45,7 @@ public class TeamResource {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
+    @Path("/createTeamWithLeague")
     public Response createTeamWithLeague(Team team, Long leagueId){
         teamService.createTeamWithLeagueId(team, leagueId);
         return Response.status(Response.Status.CREATED).entity(team).build();
@@ -50,7 +54,8 @@ public class TeamResource {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public Response addTeamIntoLeauge(Long teamId, Long leagueId){
+    @Path("/addTeam")
+    public Response addTeamIntoLeague(Long teamId, Long leagueId){
         teamService.addTeamIntoLeague(teamId, leagueId);
         return Response.status(Response.Status.CREATED).entity("Added").build();
     }
@@ -58,6 +63,7 @@ public class TeamResource {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
+    @Path("/update")
     public Response updateTeamName(Long teamId, String name){
         teamService.updateTeamName(teamId, name);
         return Response.status(Response.Status.CREATED).entity("Update").build();
