@@ -36,7 +36,7 @@ public class TeamResource {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    @Path("/createTeam")
+    @Path("/team2")
     public Response createTeam(Team team){
         teamService.createTeam(team);
         return Response.status(Response.Status.CREATED).entity(team).build();

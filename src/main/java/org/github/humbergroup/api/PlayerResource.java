@@ -62,8 +62,18 @@ public class PlayerResource {
     @POST
     @Consumes({APPLICATION_JSON})
     @Produces({APPLICATION_JSON})
-    public Response createPlayer(Player player, Long teamId) {
+    @Path("createWithTeam")
+    public Response createPlayerWithTeam(Player player, Long teamId) {
         playerService.createPlayerWithTeamId(player, teamId);
+        return Response.status(Response.Status.CREATED).entity(player).build();
+    }
+
+    @POST
+    @Consumes({APPLICATION_JSON})
+    @Produces({APPLICATION_JSON})
+    @Path("create")
+    public Response createPlayer(Player player) {
+        playerService.createPlayer(player);
         return Response.status(Response.Status.CREATED).entity(player).build();
     }
 }
