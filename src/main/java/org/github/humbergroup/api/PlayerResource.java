@@ -27,7 +27,7 @@ public class PlayerResource {
     @Produces(TEXT_PLAIN)
     public Response deletePlayer(@PathParam("id") long id) {
         playerService.delete(id);
-        return Response.ok().entity("player deleted").build();
+        return Response.ok().entity("Player deleted").build();
     }
 
 
@@ -55,7 +55,8 @@ public class PlayerResource {
                             "\t\"error\": \"No such player\"\n" +
                             "}").build();
         }
-        return Response.ok().entity(playerService.update(id, player)).build();
+        playerService.update(id, player);
+        return Response.ok().entity("Player updated").build();
     }
 
     @POST
