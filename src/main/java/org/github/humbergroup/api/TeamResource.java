@@ -7,6 +7,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
+
 @Path("/teams")
 public class TeamResource {
 
@@ -21,8 +24,8 @@ public class TeamResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/getByTeam")
-    public Response getTeamsById(long id){
+    @Path("{id}")
+    public Response getTeamsById(@PathParam("id") long id){
         return Response.ok().entity(teamService.getTeamById(id)).build();
     }
 
@@ -34,12 +37,11 @@ public class TeamResource {
     }
 
     @POST
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces({MediaType.APPLICATION_JSON})
-    @Path("/team2")
+    @Consumes({APPLICATION_JSON})
+    @Produces({APPLICATION_JSON})
     public Response createTeam(Team team){
         teamService.createTeam(team);
-        return Response.status(Response.Status.CREATED).entity(team).build();
+        return Response.status(Response.Status.CREATED).entity(teamService.createTeam(team)).build();
     }
 
     @POST
@@ -55,7 +57,7 @@ public class TeamResource {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     @Path("/addTeam")
-    public Response addTeamIntoLeague(Long teamId, Long leagueId){
+    public Response addTeamIntoLeague(@QueryParam("teamId")Long teamId, @QueryParam("leagueId")Long leagueId){
         teamService.addTeamIntoLeague(teamId, leagueId);
         return Response.status(Response.Status.CREATED).entity("Added").build();
     }
@@ -64,7 +66,7 @@ public class TeamResource {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     @Path("/update")
-    public Response updateTeamName(Long teamId, String name){
+    public Response updateTeamName(@QueryParam("teamId")Long teamId, @QueryParam("name")String name){
         teamService.updateTeamName(teamId, name);
         return Response.status(Response.Status.CREATED).entity("Update").build();
     }
