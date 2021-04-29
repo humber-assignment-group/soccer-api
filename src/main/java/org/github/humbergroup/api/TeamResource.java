@@ -47,7 +47,7 @@ public class TeamResource {
     @Produces({MediaType.APPLICATION_JSON})
     @Path("/createTeamWithLeague")
     public Response createTeamWithLeague(Team team, Long leagueId){
-        teamService.createTeamWithLeagueId(team, leagueId);
+        teamService.createTeam(team);
         return Response.status(Response.Status.CREATED).entity(team).build();
     }
 
