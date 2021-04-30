@@ -26,7 +26,7 @@ public class LeagueResource {
     @Produces({MediaType.APPLICATION_JSON})
     public Response createLeague(League league){
         leagueService.create(league);
-        return Response.status(Response.Status.CREATED).entity(league).build();
+        return Response.status(Response.Status.CREATED).entity(leagueService.create(league)).build();
     }
 
 
