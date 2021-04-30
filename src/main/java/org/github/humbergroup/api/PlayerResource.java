@@ -68,6 +68,7 @@ public class PlayerResource {
      * update Player
      * Put /players
      * {
+     *      *     "id": 1
      *     "firstName":"kobe",
      *     "lastName": "bryant",
      *     "dateOfBirth": "1978-08-23"
@@ -88,7 +89,6 @@ public class PlayerResource {
      * create a Player
      * Post /players
      * {
-     *     "id": 1
      *     "firstName":"kobe",
      *     "lastName": "bryant",
      *     "dateOfBirth": "1978-08-23"
