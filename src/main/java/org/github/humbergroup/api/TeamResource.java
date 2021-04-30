@@ -40,7 +40,6 @@ public class TeamResource {
     @Consumes({APPLICATION_JSON})
     @Produces({APPLICATION_JSON})
     public Response createTeam(Team team){
-        teamService.createTeam(team);
         return Response.status(Response.Status.CREATED).entity(teamService.createTeam(team)).build();
     }
 
