@@ -32,7 +32,7 @@ public class TeamResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getByLeague")
-    public Response getTeamsByLeagueId(long id){
+    public Response getTeamsByLeagueId(@QueryParam("leagueId") long id){
         return Response.ok().entity(teamService.getTeamsByLeagueId(id)).build();
     }
 
